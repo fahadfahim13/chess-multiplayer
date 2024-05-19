@@ -1,7 +1,10 @@
 import React from "react";
 import Board from "../assets/board.png";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="mt-2">
@@ -14,9 +17,7 @@ const Landing = () => {
               Play Chess Online on the #2 Site!
             </h1>
             <div className="mt-4 flex justify-center">
-              <button className="p-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Play Online
-              </button>
+              <Button onClick={() => navigate('/game')}>Play Online</Button>
             </div>
           </div>
         </div>
