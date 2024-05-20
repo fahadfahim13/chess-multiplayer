@@ -38,7 +38,7 @@ export class GameManager {
             if(msg.type === MESSAGE_TYPES.MOVE) {
                 const foundGame = this.games.find((gm) => (gm.getPlayer1() === socket || gm.getPlayer2() === socket));
                 if (foundGame) {
-                    foundGame.makeMove(socket, msg.move)
+                    foundGame.makeMove(socket, msg.move);
                 }
             }
         })

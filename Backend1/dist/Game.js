@@ -30,8 +30,8 @@ class Game {
         return this.player2;
     }
     makeMove(socket, move) {
-        console.log('Move number: ');
-        console.log(this.moveCounter);
+        console.log('Move: ');
+        console.log(move);
         if (this.moveCounter % 2 === 0 && socket !== this.player1) {
             return;
         }
@@ -59,8 +59,6 @@ class Game {
                     }
                 }));
             }
-            console.log('Moves length');
-            console.log(this.moveCounter);
             if (this.moveCounter % 2 === 0) {
                 this.player1.send(JSON.stringify({
                     type: Message_1.MESSAGE_TYPES.MOVE,

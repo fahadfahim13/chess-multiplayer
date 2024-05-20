@@ -20,15 +20,14 @@ const Game = () => {
       console.log(msg);
       switch (msg.type) {
         case MESSAGE_TYPES.INIT_GAME:
-          setGame(new Chess());
           setBoard(game.board());
           console.log("Game Initialized!!");
           break;
         case MESSAGE_TYPES.MOVE:
           const move = msg.payload;
           game.move(move);
-          setBoard(game.board);
-          console.log("Move from opponent: " + JSON.stringify(msg.move));
+          setBoard(game.board());
+          console.log("Move from opponent: " + JSON.stringify(msg.payload));
           break;
         case MESSAGE_TYPES.MOVE:
           console.log("Game Over");
@@ -47,12 +46,13 @@ const Game = () => {
       <div className="pt-8 max-w-screen-lg w-full">
         <div className="grid grid-cols-6 gap-4 w-full">
           <div className="col-span-4 bg-red-200 w-full flex justify-center">
-            <ChessBoard board={board} socket={socket} />
+            <ChessBoard game={game} setBoard={setBoard} board={board} socket={socket} />
           </div>
           <div className="col-span-2 bg-slate-600 w-full flex justify-center">
             <div className="pt-12">
               <Button
                 onClick={() => {
+                  console.log('Play clicked')
                   socket?.send(
                     JSON.stringify({
                       type: MESSAGE_TYPES.INIT_GAME,

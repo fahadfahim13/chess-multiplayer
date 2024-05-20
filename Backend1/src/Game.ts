@@ -38,8 +38,8 @@ export class Game {
     }
 
     makeMove(socket: WebSocket, move: MOVE) {
-        console.log('Move number: ');
-        console.log(this.moveCounter);
+        console.log('Move: ');
+        console.log(move);
         if(this.moveCounter % 2 === 0 && socket !== this.player1) {
             return;
         }
@@ -67,8 +67,6 @@ export class Game {
                     }
                 }));
             }
-            console.log('Moves length');
-            console.log(this.moveCounter);
             if(this.moveCounter % 2 === 0){
                 this.player1.send(JSON.stringify({
                     type: MESSAGE_TYPES.MOVE,
